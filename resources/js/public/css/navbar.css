@@ -1,0 +1,7 @@
+.active {
+    background: blue;
+}
+.nav-wrapper .right a:hover {
+    color: #fff;
+    text-decoration: none;
+}

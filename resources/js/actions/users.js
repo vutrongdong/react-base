@@ -1,22 +1,19 @@
 import {apiRequest} from '../apiRequest'
 import {SMART_PIRAGO} from '../constant/api-type'
-import { SET_USER_DATA, SET_AUTHENTICATED, GET_USER_DATA } from '../constant/action-type'
+import { GET_USER_DATA } from '../constant/action-type'
 
-export const setUserData = user => ({
-	type: SET_USER_DATA,
-	user
+export const setUserData = users => ({
+	type: GET_USER_DATA,
+	users: users
 });
 
-export const setAuthenticated = authenticated => ({
-	type: SET_AUTHENTICATED,
-	authenticated
-});
-
-export const getUsers = () => {
+export const getUsers = () => dispatch =>{
     return new Promise(
         (resolve, reject) => {
-            apiRequest('/api/user/', SMART_PIRAGO.api_method.get)
-                .then(response => {
+            apiRequest('/api/users/', SMART_PIRAGO.api_method.get)
+            .then(response => {
+                console.log(111, response)
+                    dispatch(setUserData(response.data));
                     resolve(response.data);
                 })
                 .catch(function (error) {

@@ -14,7 +14,7 @@ class UserController extends WebBaseController
      */
     public function index()
     {
-        $users = User::all()
+        $users = User::all();
         return response()->json($users);
     }
 
@@ -24,7 +24,6 @@ class UserController extends WebBaseController
      */
     public function create()
     {
-        return view('web::create');
     }
 
     /**
@@ -44,7 +43,7 @@ class UserController extends WebBaseController
      */
     public function show($id)
     {
-        return view('web::show');
+        //
     }
 
     /**
@@ -54,7 +53,7 @@ class UserController extends WebBaseController
      */
     public function edit($id)
     {
-        return view('web::edit');
+        //
     }
 
     /**

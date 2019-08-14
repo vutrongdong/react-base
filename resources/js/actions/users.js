@@ -12,9 +12,8 @@ export const getUsers = () => dispatch =>{
         (resolve, reject) => {
             apiRequest('/api/users/', SMART_PIRAGO.api_method.get)
             .then(response => {
-                console.log(111, response)
-                    dispatch(setUserData(response.data));
-                    resolve(response.data);
+                    dispatch(setUserData(response));
+                    resolve(response);
                 })
                 .catch(function (error) {
                     reject(error);

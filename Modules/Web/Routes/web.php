@@ -18,13 +18,12 @@ Route::group(['middleware' => 'web', 'prefix' => '/'], function()
         Route::get('/login', 'Auth\LoginController@showLoginForm')->name('web.login');
         Route::post('/login', 'Auth\LoginController@login')->name('web.post-login');
     });
-    
-    // Route::group(['middleware' => 'auth'], function() {
-        // Route::get('/', 'WebController@index')->name('web.index');
+    Route::group(['middleware' => 'auth'], function() {
+        Route::get('/{path?}', [
+            'uses' => 'WebController@index',
+            'as' => 'react',
+            'where' => ['path' => '^((?!api).)*$']
+        ])->name('web.index');
         Route::get('/logout', 'Auth\LoginController@logout')->name('web.logout');
-    // });
-    Route::get('/{path?}', [
-        'uses' => 'WebController@index',
-        'where' => ['path' => '.*']
-    ])->name('web.index');
+    });
 });

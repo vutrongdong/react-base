@@ -19,10 +19,11 @@ export default class RootComponent extends Component {
     )
   }
 }
-
-ReactDOM.render(
-  <Provider store={store}>
-    <RootComponent />
-  </Provider>,
-  document.getElementById('app')
-);
+if(document.getElementById('app')) {
+  ReactDOM.render(
+    <Provider store={store}>
+      <RootComponent />
+    </Provider>,
+    document.getElementById('app')
+  );
+}

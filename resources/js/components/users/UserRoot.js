@@ -11,17 +11,32 @@ class Users extends React.Component{
         dispatch(getUsers());
     }
     render() {
+        const {users} = this.props;
+        const userList = (users.length) ? (
+            users.map(user => {
+                console.log(user);
+                return (
+                    <div className="post card" key={user.id}>
+                        <div className="card-content">
+                            <p>name: {user.name}</p>
+                            <p>email: {user.email}</p>
+                        </div>
+                    </div>
+                )
+            })
+        ) : (
+            <div className="center">No posts yet</div>
+        )
         return (
-            <div className="container">
-                <h4 className="center">Users</h4>
-                <p>=============== Users ==============</p>
+            <div className="container home">
+                <h4 className="center">Home</h4>
+                {userList}
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         users: state.users
     }

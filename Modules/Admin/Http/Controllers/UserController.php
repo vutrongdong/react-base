@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Web\Http\Controllers;
+namespace Modules\Admin\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Entities\User;
 
-class UserController extends WebBaseController
+class UserController extends AdminBaseController
 {
     /**
      * Display a listing of the resource.

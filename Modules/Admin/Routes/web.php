@@ -20,7 +20,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => '\Modul
     });
 
     Route::group(['middleware' => 'auth.admin'], function() {
-        Route::get('admin/{path?}', [
+        Route::get('/{path?}', [
             'uses' => 'AdminController@index',
             'as' => 'react',
             'where' => ['path' => '^((?!api).)*$']

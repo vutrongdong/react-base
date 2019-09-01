@@ -13,14 +13,19 @@
 // use Symfony\Component\Routing\Route;
 Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => '\Modules\Admin\Http\Controllers'], function()
 {
-    Route::group(['middleware' => 'auth.admin'], function() {
-        Route::get('/', 'AdminController@index')->name('admin.index');
-        Route::get('/logout', 'Auth\LoginController@logout')->name('admin.logout');
-    });
     // redirect if has login
     Route::group(['middleware' => 'guest:admin,admin.index'], function() {
         Route::get('/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
         Route::post('/login', 'Auth\LoginController@login')->name('admin.post-login');
+    });
+
+    Route::group(['middleware' => 'auth.admin'], function() {
+        Route::get('admin/{path?}', [
+            'uses' => 'AdminController@index',
+            'as' => 'react',
+            'where' => ['path' => '^((?!api).)*$']
+        ])->name('admin.index');
+        Route::get('/logout', 'Auth\LoginController@logout')->name('admin.logout');
     });
 
 });

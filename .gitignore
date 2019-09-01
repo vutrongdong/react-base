@@ -11,3 +11,6 @@ npm-debug.log
 yarn-error.log
 .idea
 storage/debugbar
+composer.lock
+public/js/app.js
+

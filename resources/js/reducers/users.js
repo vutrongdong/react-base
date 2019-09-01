@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATED, GET_USER_DATA} from '../constant/action-type'
+import { GET_USER_DATA} from '../constant/action-type'
 
 var users = (state = [], action) => {
     switch (action.type) {
